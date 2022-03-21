@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="food"
+            type="com.uguraltintas.sogumadanye.model.Food" />
+        <variable
+            name="viewModel"
+            type="com.uguraltintas.sogumadanye.ui.fooddetail.FoodDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            setImageWithUrl="@{food.imageName}"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/food_image"
+            android:transitionName="@{food.imageName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@{food.name}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="Ayran" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:text="@{@string/cost_tl(food.price)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="6 ₺" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:enabled="@{viewModel.canOrder}"
+            android:text="@string/add_to_cart"
+            android:onClick="@{()-> viewModel.onOrderClick(food)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="30sp"
+            android:text="@{Integer.toString(viewModel.orderCount)}"
+            android:gravity="center"
+            tools:text="5"
+            app:layout_constraintBottom_toBottomOf="@+id/tbRemove"
+            app:layout_constraintEnd_toStartOf="@+id/tbAdd"
+            app:layout_constraintStart_toEndOf="@+id/tbRemove"
+            app:layout_constraintTop_toTopOf="@+id/tbRemove" />
+
+        <Button
+            android:id="@+id/tbAdd"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:iconGravity="textStart"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toEndOf="@id/button"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="32dp"
+            android:onClick="@{()-> viewModel.onIncreaseClick()}"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/tvCount" />
+
+        <Button
+            android:id="@+id/tbRemove"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_baseline_remove_24"
+            app:iconGravity="textStart"
+            android:onClick="@{()-> viewModel.onReduceClick()}"
+            app:layout_constraintBottom_toTopOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@id/tvCount"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toStartOf="@id/button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

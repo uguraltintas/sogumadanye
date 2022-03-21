@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.uguraltintas.sogumadanye.model.FoodFromCart" />
+        <variable
+            name="order"
+            type="com.uguraltintas.sogumadanye.model.Order" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="150dp"
+        android:maxWidth="200dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:id="@+id/cvFood">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tvFoodConstantCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                setDate="@{order.timestamp}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivFood" />
+
+            <TextView
+                android:id="@+id/tvCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/cost_tl(order.cost)}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="6 ₺" />
+
+            <ImageView
+                android:id="@+id/ivFood"
+                setImageWithUrl="@{order.imageName}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/food_image"
+                android:maxWidth="150dp"
+                android:maxHeight="150dp"
+                android:minWidth="100dp"
+                android:minHeight="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{order.foodList.get(0).name}"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivFood"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvConstantCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/cost"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvCost"
+                app:layout_constraintEnd_toStartOf="@id/tvCost"
+                app:layout_constraintTop_toTopOf="@id/tvCost" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                setOrderStatus="@{order.status}"
+                tools:text="@string/on_way"
+                app:layout_constraintStart_toEndOf="@+id/ivFood"
+                app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

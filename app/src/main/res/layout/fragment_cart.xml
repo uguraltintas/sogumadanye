@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.uguraltintas.sogumadanye.ui.cart.CartViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            setVisibility="@{!viewModel.isAnonymous}">
+
+            <TextView
+                android:id="@+id/tvTotalCost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                setVisibility="@{viewModel.isCartListVisible}"
+                android:textAlignment="textEnd"
+                android:text="@{@string/total_cost_tl(viewModel.totalCost)}"
+                tools:text="Total: 126 ₺"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnOrder"
+                app:layout_constraintEnd_toEndOf="@+id/btnOrder"
+                app:layout_constraintStart_toStartOf="@+id/btnOrder" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCart"
+                replaceCartList="@{viewModel.cartList}"
+                setVisibility="@{viewModel.isCartListVisible}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toTopOf="@id/tvTotalCost"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnOrder"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                setVisibility="@{viewModel.isCartListVisible}"
+                android:text="@string/order"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                tools:visibility="gone"
+                setVisibility="@{viewModel.loading}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <include
+                        android:id="@+id/include3"
+                        layout="@layout/cart_item_row_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
+
+                    <include
+                        android:id="@+id/include5"
+                        layout="@layout/cart_item_row_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
+
+                    <include
+                        android:id="@+id/include6"
+                        layout="@layout/cart_item_row_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp" />
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:visibility="gone"
+            setVisibility="@{viewModel.isAnonymous}">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_outline_report_24"
+                android:contentDescription="@string/anonymousInfo" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/anonymousInfo"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

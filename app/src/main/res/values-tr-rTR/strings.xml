@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Soğumadan Ye</string>
+    <string name="profile">Profil</string>
+    <string name="cart">Sepet</string>
+    <string name="foods">Yemekler</string>
+    <string name="add_to_cart">Sepete Ekle</string>
+    <string name="food_image">Yemek Görseli</string>
+    <string name="cost">Tutar:</string>
+    <string name="cost_tl">%1d ₺</string>
+    <string name="total_cost_tl">Toplam Tutar: %1d ₺</string>
+    <string name="price">Birim fiyatı:</string>
+    <string name="count">Adet:</string>
+    <string name="or">ya da</string>
+    <string name="anonymous">Eğer isterseniz anonim olarak giriş yapabilirsiniz.</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="login">Giriş Yap</string>
+    <string name="password">Şifre</string>
+    <string name="email">Email</string>
+    <string name="registerPage">Kayıt Sayfası</string>
+    <string name="name">İsim</string>
+    <string name="order">Sipariş ver</string>
+    <string name="date">Tarih:</string>
+    <string name="favourite">Favoriler</string>
+    <string name="prepare">Siparişiniz hazırlanıyor.</string>
+    <string name="delivered">Siparişiniz teslim edildi.</string>
+    <string name="on_way">Siparişiniz yolda.</string>
+    <string name="canceled">Siparişiniz iptal edildi.</string>
+    <string name="logout">Çıkış yap</string>
+    <string name="register_cc">Kayıt ol</string>
+    <string name="settings">Ayarlar</string>
+    <string name="you_must_login_if_you_want_to_order">Sipariş vermek istiyorsanız giriş yapmanız gerekiyor.</string>
+    <string name="hello">Merhaba</string>
+    <string name="anonymousInfo">Eğer bu uygulamayı tam anlamıyla kullanmak istiyorsanız.Hesap oluşturmalısınız.</string>
+    <string name="orders">Siparişler</string>
+    <string name="pick_theme">Tema Seç</string>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="foodCart"
+            type="com.uguraltintas.sogumadanye.model.FoodFromCart" />
+
+        <variable
+            name="cost"
+            type="Integer" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="150dp"
+        android:maxWidth="200dp"
+        android:layout_margin="16dp"
+        android:transitionName="@{foodCart.imageName}"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:id="@+id/cvFood">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tvFoodPrice"
+                android:text="@{@string/cost_tl(foodCart.price)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvConstantPrice"
+                app:layout_constraintStart_toEndOf="@+id/tvConstantPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvConstantPrice"
+                tools:text="6 ₺" />
+
+            <TextView
+                android:id="@+id/tvFoodCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@{Integer.toString(foodCart.count)}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvFoodConstantCount"
+                app:layout_constraintStart_toEndOf="@id/tvFoodConstantCount"
+                app:layout_constraintTop_toTopOf="@+id/tvFoodConstantCount"
+                tools:text="6" />
+
+            <TextView
+                android:id="@+id/tvFoodConstantCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/count"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivFood" />
+
+            <TextView
+                android:id="@+id/tvCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/cost_tl(cost)}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="6 ₺" />
+
+            <ImageView
+                android:id="@+id/ivFood"
+                setImageWithUrl="@{foodCart.imageName}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="@string/food_image"
+                android:maxWidth="150dp"
+                android:maxHeight="150dp"
+                android:minWidth="100dp"
+                android:minHeight="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{foodCart.name}"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivFood"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Ayran" />
+
+            <TextView
+                android:id="@+id/tvConstantCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/cost"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvCost"
+                app:layout_constraintEnd_toStartOf="@id/tvCost"
+                app:layout_constraintTop_toTopOf="@id/tvCost" />
+
+            <TextView
+                android:id="@+id/tvConstantPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/price"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toTopOf="@id/tvFoodConstantCount"
+                app:layout_constraintStart_toEndOf="@id/ivFood" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

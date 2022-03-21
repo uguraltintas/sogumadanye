@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:minWidth="150dp"
+        android:maxWidth="200dp"
+        android:minHeight="200dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:id="@+id/cvFood">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvFoodPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="25dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/shimmerColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/ivFood"
+                app:layout_constraintStart_toStartOf="@id/ivFood"
+                app:layout_constraintTop_toBottomOf="@id/tvFoodName" />
+
+            <ImageView
+                android:id="@+id/ivFood"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:minWidth="100dp"
+                android:minHeight="100dp"
+                android:maxWidth="150dp"
+                android:maxHeight="150dp"
+                android:background="@color/shimmerColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/food_image" />
+
+            <TextView
+                android:id="@+id/tvFoodName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                android:background="@color/shimmerColor"
+                app:layout_constraintEnd_toEndOf="@id/ivFood"
+                app:layout_constraintStart_toStartOf="@id/ivFood"
+                app:layout_constraintTop_toBottomOf="@id/ivFood"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>
